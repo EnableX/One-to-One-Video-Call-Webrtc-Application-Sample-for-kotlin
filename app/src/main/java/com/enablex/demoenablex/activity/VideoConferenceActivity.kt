@@ -178,8 +178,12 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         }
     }
 
-    override fun onReceivedChatDataAtRoom(p0: JSONObject?) {
-        // received when chat data received at room
+    override fun onMessageReceived(p0: JSONObject?) {
+         //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun onUserDataReceived(p0: JSONObject?) {
+         //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onEventInfo(p0: JSONObject?) {

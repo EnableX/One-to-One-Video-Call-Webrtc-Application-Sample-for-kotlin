@@ -46,6 +46,6 @@ class ApplicationController : Application(), Application.ActivityLifecycleCallba
         var context: Context? = null
 
         val sharedPrefs: SharedPreferences
-            get() = context!!.getSharedPreferences("APP_PREF_", Context.MODE_PRIVATE)
+            get() = context!!.getSharedPreferences("APP_PREF_KOTLIN", Context.MODE_PRIVATE)
     }
 }
