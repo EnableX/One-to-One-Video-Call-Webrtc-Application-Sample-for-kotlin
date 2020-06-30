@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -37,7 +38,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     private var isVideoMuted = false
     private var isFrontCamera = true
     private var isAudioMuted = false
-    private var enxLogsUtil: EnxLogsUtil? = null
+    private var enxLogsUtil: EnxUtilityManager? = null
     private var rl: RelativeLayout? = null
     private var gson: Gson? = null
     private var localStream: EnxStream? = null
@@ -103,7 +104,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         gson = Gson()
         supportActionBar!!.title = "QuickApp"
         enxRtc = EnxRtc(this, this, this)
-        enxLogsUtil = EnxLogsUtil.getInstance()
+        enxLogsUtil = EnxUtilityManager.getInstance()
         enxLogsUtil!!.enableLogs(true)
         localStream = enxRtc!!.joinRoom(token, localStreamJsonObject, roomInfo, null)
         enxPlayerView = EnxPlayerView(this, EnxPlayerView.ScalingType.SCALE_ASPECT_BALANCED, true)
@@ -198,6 +199,10 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         // received your chat data successfully sent to the other end
     }
 
+    override fun onConferencessExtended(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
     override fun onUserRoleChanged(p0: JSONObject?) {
         // received when user role changed successfully
     }
@@ -225,6 +230,10 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
 
     override fun onLogUploaded(p0: JSONObject?) {
         //received when logs successfully uploaded
+    }
+
+    override fun onConferenceRemainingDuration(p0: JSONObject?) {
+        TODO("Not yet implemented")
     }
 
 
@@ -275,6 +284,14 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     override fun onEventError(jsonObject: JSONObject) {
         //received when any error occurred for any room event
         runOnUiThread { Toast.makeText(this@VideoConferenceActivity, jsonObject.optString("msg"), Toast.LENGTH_SHORT).show() }
+    }
+
+    override fun onAckDestroy(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAckDropUser(p0: JSONObject?) {
+        TODO("Not yet implemented")
     }
 
     override fun onAudioEvent(jsonObject: JSONObject) {

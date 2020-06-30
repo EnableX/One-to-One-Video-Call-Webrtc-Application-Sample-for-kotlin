@@ -63,11 +63,9 @@ class WebCall(private val context: Context, private val callback: WebResponse, `
             httpURLConnection.readTimeout = 60000
             httpURLConnection.connectTimeout = 60000
             httpURLConnection.requestMethod = "GET"
-            if (isAuthenticated) {
-                val text = WebConstants.userName + ":" + WebConstants.password
-                val data = text.toByteArray(charset("UTF-8"))
-                val base64 = Base64.encodeToString(data, Base64.DEFAULT).replace("\n", "")
-                httpURLConnection.setRequestProperty("Authorization", "Basic $base64")
+            if(WebConstants.kTry){
+                httpURLConnection.setRequestProperty("x-app-id", WebConstants.kAppId)
+                httpURLConnection.setRequestProperty("x-app-key", WebConstants.kAppkey)
             }
             httpURLConnection.setRequestProperty("Content-Type", "application/json")
             httpURLConnection.connect()
@@ -120,11 +118,9 @@ class WebCall(private val context: Context, private val callback: WebResponse, `
             httpURLConnection.requestMethod = "POST"
             httpURLConnection.doInput = true
             httpURLConnection.doOutput = true
-            if (isAuthenticated) {
-                val text = WebConstants.userName + ":" + WebConstants.password
-                val data = text.toByteArray(charset("UTF-8"))
-                val base64 = Base64.encodeToString(data, Base64.DEFAULT).replace("\n", "")
-                httpURLConnection.setRequestProperty("Authorization", "Basic $base64")
+            if(WebConstants.kTry){
+                httpURLConnection.setRequestProperty("x-app-id", WebConstants.kAppId)
+                httpURLConnection.setRequestProperty("x-app-key", WebConstants.kAppkey)
             }
             httpURLConnection.setRequestProperty("Content-Type", "application/json")
             httpURLConnection.connect()
