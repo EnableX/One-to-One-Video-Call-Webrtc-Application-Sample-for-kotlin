@@ -16,12 +16,13 @@ import com.enablex.demoenablex.R
 import com.enablex.demoenablex.utilities.OnDragTouchListener
 import com.google.gson.Gson
 import enx_rtc_android.Controller.*
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
 
-class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamObserver, EnxLogsObserver, View.OnClickListener, EnxReconnectObserver {
+class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamObserver, EnxLogsObserver, View.OnClickListener, EnxReconnectObserver,EnxActiveTalkerViewObserver {
 
     private var enxRtc: EnxRtc? = null
     private var token: String? = ""
@@ -45,6 +46,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     private var enxPlayerViewRemote: EnxPlayerView? = null
     private var PERMISSION_ALL = 1
     private var PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.RECORD_AUDIO)
+    var mRecyclerView: RecyclerView? = null
 
     private val localStreamJsonObject: JSONObject
         get() {
@@ -52,12 +54,10 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
             try {
                 jsonObject.put("audio", true)
                 jsonObject.put("video", true)
-                jsonObject.put("data", false)
-                jsonObject.put("maxVideoBW", 400)
-                jsonObject.put("minVideoBW", 300)
+                jsonObject.put("data", true)
                 val videoSize = JSONObject()
-                videoSize.put("minWidth", 720)
-                videoSize.put("minHeight", 480)
+                videoSize.put("minWidth", 320)
+                videoSize.put("minHeight", 180)
                 videoSize.put("maxWidth", 1280)
                 videoSize.put("maxHeight", 720)
                 jsonObject.put("videoSize", videoSize)
@@ -78,7 +78,23 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
                 jsonObject.put("allow_reconnect", true)
                 jsonObject.put("number_of_attempts", 3)
                 jsonObject.put("timeout_interval", 15)
-                jsonObject.put("audio_only", false)
+                jsonObject.put("activeviews", "view") //view
+
+                val jobject = JSONObject()
+                jobject.put("audiomute", true)
+                jobject.put("videomute", true)
+                jobject.put("bandwidth", true)
+                jobject.put("screenshot", true)
+                jobject.put("avatar", true)
+                jobject.put("iconColor", getResources().getColor(R.color.colorPrimary))
+                jobject.put("iconHeight", 30)
+                jobject.put("iconWidth", 30)
+                jobject.put("avatarHeight", 200)
+                jobject.put("avatarWidth", 200)
+
+
+                jsonObject.put("playerConfiguration", jobject)
+
             } catch (e: JSONException) {
                 e.printStackTrace()
             }
@@ -106,7 +122,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         enxRtc = EnxRtc(this, this, this)
         enxLogsUtil = EnxUtilityManager.getInstance()
         enxLogsUtil!!.enableLogs(true)
-        localStream = enxRtc!!.joinRoom(token, localStreamJsonObject, roomInfo, null)
+        localStream = enxRtc!!.joinRoom(token, localStreamJsonObject, roomInfo,JSONArray() )
         enxPlayerView = EnxPlayerView(this, EnxPlayerView.ScalingType.SCALE_ASPECT_BALANCED, true)
         Log.e("localStream", localStream!!.toString())
         localStream!!.attachRenderer(enxPlayerView)
@@ -145,6 +161,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         enxRooms = enxRoom
         enxRooms?.publish(localStream)
         enxRooms?.setReconnectObserver(this)
+        enxRooms?.setActiveTalkerViewObserver(this)
         Toast.makeText(this@VideoConferenceActivity, "Room connected Successfully", Toast.LENGTH_SHORT).show()
     }
 
@@ -259,25 +276,16 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
 
     override fun onActiveTalkerList(jsonObject: JSONObject) {
         //received when Active talker update happens
-        try {
-            val map = enxRooms!!.remoteStreams
-            val jsonArray = jsonObject.getJSONArray("activeList")
-            if (jsonArray.length() == 0) {
-                val temp = participant?.getChildAt(0)
-                participant?.removeView(temp)
-                return
-            } else {
-                val jsonStreamid = jsonArray.getJSONObject(0)
-                val streamID = jsonStreamid.getString("streamId")
-                val stream = map[streamID]
-                if (enxPlayerViewRemote == null) {
-                    enxPlayerViewRemote = EnxPlayerView(this@VideoConferenceActivity, EnxPlayerView.ScalingType.SCALE_ASPECT_BALANCED, false)
-                    stream!!.attachRenderer(enxPlayerViewRemote)
-                    participant?.addView(enxPlayerViewRemote)
-                }
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        // Deprecated
+    }
+
+    override fun onActiveTalkerList(p0: RecyclerView?) {
+        mRecyclerView = p0
+        if (p0 == null) {
+            participant!!.removeAllViews()
+        } else {
+            participant!!.removeAllViews()
+            participant!!.addView(p0)
         }
     }
 

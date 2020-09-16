@@ -164,6 +164,10 @@ override fun onStreamAdded(enxStream: EnxStream?) {
 }
 ```
 
-## 5 Trial
+## 5 Demo
 
-Sign up for a free trial https://portal.enablex.io/cpaas/trial-sign-up/ or try our multiparty video chat https://try.enablex.io/
+EnableX provides hosted Vemo Application of different use-case for you to try out.
+
+1. Try a quick Video Call: https://demo.enablex.io/
+2. Try Apps on Demo Zone: https://portal.enablex.io/demo-zone/
+3. Try Meeting & Webinar:  https://www.enablex.io/ucaas/
