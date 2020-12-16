@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
+import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -46,7 +46,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     private var enxPlayerViewRemote: EnxPlayerView? = null
     private var PERMISSION_ALL = 1
     private var PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.RECORD_AUDIO)
-    var mRecyclerView: RecyclerView? = null
+    var mRecyclerView: androidx.recyclerview.widget.RecyclerView? = null
 
     private val localStreamJsonObject: JSONObject
         get() {
@@ -274,12 +274,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         this.finish()
     }
 
-    override fun onActiveTalkerList(jsonObject: JSONObject) {
-        //received when Active talker update happens
-        // Deprecated
-    }
-
-    override fun onActiveTalkerList(p0: RecyclerView?) {
+    override fun onActiveTalkerList(p0: androidx.recyclerview.widget.RecyclerView?) {
         mRecyclerView = p0
         if (p0 == null) {
             participant!!.removeAllViews()
@@ -355,6 +350,18 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
 
     override fun onRemoteStreamVideoUnMute(jsonObject: JSONObject) {
     //received when any remote stream unmute video
+    }
+
+    override fun onAckPinUsers(p0: JSONObject?) {
+
+    }
+
+    override fun onAckUnpinUsers(p0: JSONObject?) {
+
+    }
+
+    override fun onPinnedUsers(p0: JSONObject?) {
+
     }
 
     override fun onClick(view: View) {
