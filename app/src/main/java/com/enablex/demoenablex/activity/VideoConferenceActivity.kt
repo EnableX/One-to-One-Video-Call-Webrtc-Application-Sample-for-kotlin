@@ -364,6 +364,38 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
 
     }
 
+    override fun onRoomAwaited(p0: EnxRoom?, p1: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUserAwaited(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAckForApproveAwaitedUser(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAckForDenyAwaitedUser(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAckAddSpotlightUsers(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onAckRemoveSpotlightUsers(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateSpotlightUsers(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onRoomBandwidthAlert(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
     override fun onClick(view: View) {
         when (view.id) {
             R.id.disconnect -> roomDisconnect()
