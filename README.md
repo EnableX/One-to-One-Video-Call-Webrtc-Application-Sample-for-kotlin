@@ -137,4 +137,4 @@ Airtel IQ provides a library of Documentations, How-to Guides, and Sample Codes 
 
 Refer to the Complete Developer’s Guide for more details. 
 
-You may also write to us for additional support at support@Airtel IQ.io. 
+You may also write to us for additional support at (https://developer.enablex.io/)support@Airtel IQ.io. 
