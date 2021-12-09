@@ -87,8 +87,8 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
                 jobject.put("screenshot", true)
                 jobject.put("avatar", true)
                 jobject.put("iconColor", getResources().getColor(R.color.colorPrimary))
-                jobject.put("iconHeight", 30)
-                jobject.put("iconWidth", 30)
+                jobject.put("iconHeight", 27)
+                jobject.put("iconWidth", 27)
                 jobject.put("avatarHeight", 200)
                 jobject.put("avatarWidth", 200)
 
