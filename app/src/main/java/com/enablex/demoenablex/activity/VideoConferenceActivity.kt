@@ -204,6 +204,10 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
          //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun onUserStartTyping(p0: Boolean) {
+
+    }
+
     override fun onEventInfo(p0: JSONObject?) {
         // received for different events update
     }
@@ -217,7 +221,6 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     }
 
     override fun onConferencessExtended(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onUserRoleChanged(p0: JSONObject?) {
@@ -250,7 +253,6 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     }
 
     override fun onConferenceRemainingDuration(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
 
@@ -274,7 +276,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         this.finish()
     }
 
-    override fun onActiveTalkerList(p0: androidx.recyclerview.widget.RecyclerView?) {
+    override fun onActiveTalkerView(p0: androidx.recyclerview.widget.RecyclerView?) {
         mRecyclerView = p0
         if (p0 == null) {
             participant!!.removeAllViews()
@@ -290,11 +292,9 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     }
 
     override fun onAckDestroy(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onAckDropUser(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onAudioEvent(jsonObject: JSONObject) {
@@ -365,35 +365,39 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     }
 
     override fun onRoomAwaited(p0: EnxRoom?, p1: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onUserAwaited(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onAckForApproveAwaitedUser(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onAckForDenyAwaitedUser(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onAckAddSpotlightUsers(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onAckRemoveSpotlightUsers(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onUpdateSpotlightUsers(p0: JSONObject?) {
-        TODO("Not yet implemented")
     }
 
     override fun onRoomBandwidthAlert(p0: JSONObject?) {
-        TODO("Not yet implemented")
+    }
+
+    override fun onStopAllSharingACK(p0: JSONObject?) {
+    }
+
+    override fun onACKStartLiveTranscription(p0: JSONObject?) {
+    }
+
+    override fun onACKStopLiveTranscription(p0: JSONObject?) {
+    }
+
+    override fun onTranscriptionEvents(p0: JSONObject?) {
     }
 
     override fun onClick(view: View) {
