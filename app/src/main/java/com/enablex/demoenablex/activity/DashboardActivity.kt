@@ -167,7 +167,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener, WebResponse
             val jsonObject = JSONObject(response)
             if (jsonObject.optString("result").equals("0", ignoreCase = true)) {
                 token = jsonObject.optString("token")
-                Log.e("token", token)
+              //  Log.e("token", token)
                 val intent = Intent(this@DashboardActivity, VideoConferenceActivity::class.java)
                 intent.putExtra("token", token)
                 intent.putExtra("name", name!!.text.toString())

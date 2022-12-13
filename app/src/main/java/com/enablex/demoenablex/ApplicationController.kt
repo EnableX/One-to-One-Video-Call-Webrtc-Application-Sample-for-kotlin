@@ -14,8 +14,9 @@ class ApplicationController : Application(), Application.ActivityLifecycleCallba
         context = this
     }
 
-    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle) {
 
+
+    override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
     }
 
     override fun onActivityStarted(activity: Activity) {

@@ -391,14 +391,6 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     override fun onStopAllSharingACK(p0: JSONObject?) {
     }
 
-    override fun onACKStartLiveTranscription(p0: JSONObject?) {
-    }
-
-    override fun onACKStopLiveTranscription(p0: JSONObject?) {
-    }
-
-    override fun onTranscriptionEvents(p0: JSONObject?) {
-    }
 
     override fun onClick(view: View) {
         when (view.id) {
