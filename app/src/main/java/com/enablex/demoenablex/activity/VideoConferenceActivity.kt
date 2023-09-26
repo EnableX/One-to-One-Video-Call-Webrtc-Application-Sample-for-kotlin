@@ -123,10 +123,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         enxLogsUtil = EnxUtilityManager.getInstance()
         enxLogsUtil!!.enableLogs(true)
         localStream = enxRtc!!.joinRoom(token, localStreamJsonObject, roomInfo,JSONArray() )
-        enxPlayerView = EnxPlayerView(this, EnxPlayerView.ScalingType.SCALE_ASPECT_BALANCED, true)
-        Log.e("localStream", localStream!!.toString())
-        localStream!!.attachRenderer(enxPlayerView)
-        moderator?.addView(enxPlayerView)
+
     }
 
     private fun setClickListener() {
@@ -159,6 +156,11 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     override fun onRoomConnected(enxRoom: EnxRoom?, jsonObject: JSONObject) {
         //received when user connected with Enablex room
         enxRooms = enxRoom
+
+        enxPlayerView = EnxPlayerView(this, EnxPlayerView.ScalingType.SCALE_ASPECT_BALANCED, true)
+        Log.e("localStream", localStream!!.toString())
+        localStream?.attachRenderer(enxPlayerView)
+        moderator?.addView(localStream?.mEnxPlayerView)
         enxRooms?.publish(localStream)
         enxRooms?.setReconnectObserver(this)
         enxRooms?.setActiveTalkerViewObserver(this)
@@ -276,7 +278,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         this.finish()
     }
 
-    override fun onActiveTalkerView(p0: androidx.recyclerview.widget.RecyclerView?) {
+    override fun onActiveTalkerView(p0: RecyclerView?) {
         mRecyclerView = p0
         if (p0 == null) {
             participant!!.removeAllViews()
@@ -284,6 +286,10 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
             participant!!.removeAllViews()
             participant!!.addView(p0)
         }
+    }
+
+    override fun onActiveTalkerView(p0: RecyclerView?,enxRoom: EnxRoom?) {
+
     }
 
     override fun onEventError(jsonObject: JSONObject) {
