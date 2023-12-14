@@ -1,8 +1,19 @@
-# 1-to-1 RTC: A Sample Android App with EnableX Android Toolkit
+# 1-to-1 RTC: An Android App with EnableX Android Toolkit
 
-This is a Sample Android App that demonstrates the use of EnableX platform Server APIs (https://www.enablex.io/developer/video-api/server-api) and Android Toolkit (https://www.enablex.io/developer/video-api/client-api/android-toolkit/) to build 1-to-1 RTC (Real Time Communication) Application.  It allows developers to ramp up on app development by hosting on their own devices. 
+TThis Sample Android App is a complete toolkit to build a 1-to-1 Real-Time Communication (RTC) application. Built on EnableX Video APIs and the Android Toolkit, the app covers the entire spectrum of a real-time video chat application. This sample app offers:
+Virtual Room Creation: The app creates a virtual room instantly, hosted on the EnableX platform. Users can join these rooms using generated room credentials.
+Real-Time Communication: Provides high-quality, real-time video and audio streaming capabilities.
+Moderator Functions: Allows setting user roles for stream control, including the ability to have one moderator.
+Code Flexibility: Developed in Kotlin, designed for straightforward integration and customization.
 
-This App creates a virtual Room on the fly  hosted on the Enablex platform using REST calls and uses the Room credentials (i.e. Room Id) to connect to the virtual Room as a mobile client.  The same Room credentials can be shared with others to join the same virtual Room to carry out an RTC session. 
+Important Links:
+
+EnableX Platform Video APIs- https://www.enablex.io/developer/video-api/server-api
+Android Toolkit - https://www.enablex.io/developer/video-api/client-api/android-toolkit/
+EnableX Developer Center: https://developer.enablex.io/
+
+How to Get Started
+For a step-by-step guide from prerequisites like obtaining your App ID and App Key to configuring the Android client and setting up your own application server, follow the structured sections below.
 
 > EnableX Developer Center: https://developer.enablex.io/
 
