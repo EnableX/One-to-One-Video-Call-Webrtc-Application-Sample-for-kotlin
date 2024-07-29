@@ -5,21 +5,34 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import androidx.core.app.ActivityCompat
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.*
+import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.enablex.demoenablex.R
 import com.enablex.demoenablex.utilities.OnDragTouchListener
 import com.google.gson.Gson
-import enx_rtc_android.Controller.*
+import enx_rtc_android.Controller.EnxActiveTalkerViewObserver
+import enx_rtc_android.Controller.EnxLogsObserver
+import enx_rtc_android.Controller.EnxPlayerView
+import enx_rtc_android.Controller.EnxReconnectObserver
+import enx_rtc_android.Controller.EnxRoom
+import enx_rtc_android.Controller.EnxRoomObserver
+import enx_rtc_android.Controller.EnxRtc
+import enx_rtc_android.Controller.EnxStream
+import enx_rtc_android.Controller.EnxStreamObserver
+import enx_rtc_android.Controller.EnxUtilityManager
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.*
 
 
 class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamObserver, EnxLogsObserver, View.OnClickListener, EnxReconnectObserver,EnxActiveTalkerViewObserver {
@@ -63,6 +76,8 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
                 jsonObject.put("videoSize", videoSize)
                 jsonObject.put("audioMuted", false)
                 jsonObject.put("videoMuted", false)
+                jsonObject.put("audio_only", true)
+
                 jsonObject.put("name", name)
             } catch (e: JSONException) {
                 e.printStackTrace()
@@ -214,9 +229,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         // received for different events update
     }
 
-    override fun onSwitchedUserRole(p0: JSONObject?) {
-        // received when user switch their role (from moderator  to participant)
-    }
+
 
     override fun onAcknowledgedSendData(p0: JSONObject?) {
         // received your chat data successfully sent to the other end
@@ -225,9 +238,9 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     override fun onConferencessExtended(p0: JSONObject?) {
     }
 
-    override fun onUserRoleChanged(p0: JSONObject?) {
-        // received when user role changed successfully
-    }
+
+
+
 
 
     override fun onReconnect(p0: String?) {
@@ -291,9 +304,13 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     override fun onActiveTalkerView(p0: RecyclerView?,enxRoom: EnxRoom?) {
 
     }
+    override fun onAvailable(count:Int?){
+
+    }
 
     override fun onEventError(jsonObject: JSONObject) {
         //received when any error occurred for any room event
+        runOnUiThread { Toast.makeText(this@VideoConferenceActivity, jsonObject.optString("msg"), Toast.LENGTH_SHORT).show() }
 
     }
 
