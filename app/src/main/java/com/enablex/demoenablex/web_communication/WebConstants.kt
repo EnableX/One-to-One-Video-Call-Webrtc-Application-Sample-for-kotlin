@@ -11,8 +11,8 @@ object WebConstants {
     /*The following information required, Only when kTry = true, When you hosted your own webservice remove these fileds*/
 
     /*Use enablec portal to create your app and get these following credentials*/
-    val kAppId = "669e2fc4e1c1f3d9170aac39"
-    val kAppkey = "a8ujedeWumyga7uvygu9adudeBaZe6eQyXyW"
+    val kAppId = "App-Id"
+    val kAppkey = "App-key"
 
     val getRoomId = "createRoom/"
     val getRoomIdCode = 1
