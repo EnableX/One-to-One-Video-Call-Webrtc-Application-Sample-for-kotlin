@@ -294,7 +294,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
 
     override fun onEventError(jsonObject: JSONObject) {
         //received when any error occurred for any room event
-        runOnUiThread { Toast.makeText(this@VideoConferenceActivity, jsonObject.optString("msg"), Toast.LENGTH_SHORT).show() }
+
     }
 
     override fun onAckDestroy(p0: JSONObject?) {
