@@ -58,7 +58,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
     private var localStream: EnxStream? = null
     private var enxPlayerViewRemote: EnxPlayerView? = null
     private var PERMISSION_ALL = 1
-    private var PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.RECORD_AUDIO)
+    private var PERMISSIONS = arrayOf(android.Manifest.permission.CAMERA, android.Manifest.permission.RECORD_AUDIO)
     var mRecyclerView: androidx.recyclerview.widget.RecyclerView? = null
 
     private val localStreamJsonObject: JSONObject
@@ -76,7 +76,6 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
                 jsonObject.put("videoSize", videoSize)
                 jsonObject.put("audioMuted", false)
                 jsonObject.put("videoMuted", false)
-                jsonObject.put("audio_only", true)
 
                 jsonObject.put("name", name)
             } catch (e: JSONException) {
@@ -455,9 +454,7 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             1 -> if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[1] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[2] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[3] == PackageManager.PERMISSION_GRANTED) {
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                 initialize()
             } else {
                 Toast.makeText(this, "Please enable permissions to further proceed.", Toast.LENGTH_SHORT).show()
