@@ -8,8 +8,8 @@ Code Flexibility: Developed in Kotlin, designed for straightforward integration 
 
 Important Links:
 
-EnableX Platform Video APIs- https://www.enablex.io/developer/video-api/server-api
-Android Toolkit - https://www.enablex.io/developer/video-api/client-api/android-toolkit/
+EnableX Platform Video APIs- https://developer.enablex.io/docs/references/apis/video-api/index/
+Android Toolkit - https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/
 EnableX Developer Center: https://developer.enablex.io/
 
 How to Get Started
@@ -93,15 +93,15 @@ Note the following:
 * Application Server is created using EnableX Server API, a Rest API Service helps in provisioning, session access and post-session reporting.  
 
 To know more about Server API, go to:
-https://www.enablex.io/developer/video-api/server-api
+https://developer.enablex.io/docs/references/apis/video-api/index/
 
 
 ## 3 Android Toolkit
 
 This Sample Applcation uses EnableX Android Toolkit to communicate with EnableX Servers to initiate and manage Real Time Communications. Please update your Application with latest version of EnableX Android Toolkit as and when a new release is available.
 
-* Documentation: https://www.enablex.io/developer/video-api/client-api/android-toolkit/
-* Download Toolkit: https://www.enablex.io/developer/video-api/client-api/android-toolkit/
+* Documentation: https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/
+* Download Toolkit: https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/index/
 
 
 ## 4 Application Walk-through
@@ -111,13 +111,13 @@ This Sample Applcation uses EnableX Android Toolkit to communicate with EnableX 
 We create a Token for a Room Id to get connected to EnableX Platform to connect to the Virtual Room to carry out a RTC Session.
 
 To create Token, we make use of Server API. Refer following documentation:
-https://www.enablex.io/developer/video-api/server-api/rooms-route/#create-token
+https://developer.enablex.io/docs/references/apis/video-api/content/api-routes/#create-a-room
 
 
 ### 4.2 Connect to a Room, Initiate & Publish Stream
 
 We use the Token to get connected to the Virtual Room. Once connected, we intiate local stream and publish into the room. Refer following documentation for this process:
-https://www.enablex.io/developer/video-api/client-api/android-toolkit/room-connection/#connect-room
+https://developer.enablex.io/docs/references/sdks/video-sdk/ios-sdk/room-connection/index/
 
 
 
@@ -134,7 +134,7 @@ localStream!!.attachRenderer(enxPlayerView)
 // Add Player to View
 yourView?.addView(enxPlayerView)
   ```
-More on Player: https://www.enablex.io/developer/video-api/client-api/android-toolkit/play-stream/
+More on Player: https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/stream-configuration/content/stream-information/
 
 ### 4.4 Handle Server Events
 
