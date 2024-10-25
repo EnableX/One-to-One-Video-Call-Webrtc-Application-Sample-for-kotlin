@@ -24,7 +24,7 @@ For a step-by-step guide from prerequisites like obtaining your App ID and App K
 
 #### 1.1.1 App Id and App Key 
 
-* Register with EnableX [https://portal.enablex.io/cpaas/trial-sign-up/] 
+* Register with EnableX [https://www.enablex.io/free-trial/] 
 * Create your Application
 * Get your App ID and App Key delivered to your email
 
@@ -93,7 +93,7 @@ Note the following:
 * Application Server is created using EnableX Server API, a Rest API Service helps in provisioning, session access and post-session reporting.  
 
 To know more about Server API, go to:
-https://developer.enablex.io/docs/references/apis/video-api/index/
+https://developer.enablex.io/docs/guides/video-guide/sample-codes/video-calling-app/#demo-application-server
 
 
 ## 3 Android Toolkit
@@ -117,7 +117,7 @@ https://developer.enablex.io/docs/references/apis/video-api/content/api-routes/#
 ### 4.2 Connect to a Room, Initiate & Publish Stream
 
 We use the Token to get connected to the Virtual Room. Once connected, we intiate local stream and publish into the room. Refer following documentation for this process:
-https://developer.enablex.io/docs/references/sdks/video-sdk/ios-sdk/room-connection/index/
+https://developer.enablex.io/docs/references/sdks/video-sdk/android-sdk/room-connection/index/
 
 
 
@@ -179,5 +179,5 @@ override fun onStreamAdded(enxStream: EnxStream?) {
 EnableX provides hosted Demo Application Server of different use-case for you to try out.
 
 Try a quick Video Call: https://demo.enablex.io/
-Sign up for a free trial https://portal.enablex.io/cpaas/trial-sign-up/
+Sign up for a free trial https://www.enablex.io/free-trial/
 
