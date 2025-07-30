@@ -216,11 +216,31 @@ class VideoConferenceActivity : AppCompatActivity(), EnxRoomObserver, EnxStreamO
          //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun onACKSendMessage(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onMessageDelete(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onACKDeleteMessage(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onMessageUpdate(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onACKUpdateMessage(p0: JSONObject?) {
+        TODO("Not yet implemented")
+    }
+
     override fun onUserDataReceived(p0: JSONObject?) {
          //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onUserStartTyping(p0: Boolean) {
+    override fun onUserStartTyping(p0: JSONObject) {
 
     }
 

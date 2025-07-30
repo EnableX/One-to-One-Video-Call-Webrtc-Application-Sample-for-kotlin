@@ -19,3 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class org.webrtc.** { *; }
+
+# Optional: keep native methods if you're using JNI
+-keepclasseswithmembers class * {
+    native <methods>;
+}
