@@ -13,7 +13,10 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true // Enable MultiDex support
-
+        
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'
+        }
     }
     buildTypes {
         release {
@@ -23,7 +26,8 @@ android {
     }
     packagingOptions {
         pickFirst '**/*.so'
-        jniLibs.useLegacyPackaging = true
+        // Remove legacy packaging for 16KB support
+        // jniLibs.useLegacyPackaging = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
